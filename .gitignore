@@ -1,0 +1,6 @@
+.gradle/
+.idea/
+*.db
+build/
+node_modules/
+src/main/webapp/WEB-INF/resources/bower_components/
