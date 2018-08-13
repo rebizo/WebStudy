@@ -12,8 +12,6 @@ mainClassName = 'Imp.Main'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-
-
 war{
     webAppDirName=file('src/main/webapp')
 }
