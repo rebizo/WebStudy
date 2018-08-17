@@ -1,9 +1,13 @@
 plugins {
     id 'java'
     id "war"
+    //id "jar"
     id "idea"
     id "org.akhikhl.gretty" version "2.0.0"
+    //id: 'java-library-distribution'
 }
+
+description = "WebStuding"
 
 apply plugin: 'application'
 
@@ -12,9 +16,9 @@ mainClassName = 'Imp.Main'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-war{
-    webAppDirName=file('src/main/webapp')
-}
+/*war{
+    webAppDirName=file('src/main/templates')
+}*/
 
 //project.webAppDirName = "src/main/webapp"
 project.webAppDirName = 'webapp'
@@ -23,33 +27,55 @@ group 'WebStuding'
 version '1.0-SNAPSHOT'
 
 /*jar {
-    baseName = 'gs-gradle'
-    version =  '0.1.0'
+    manifest {
+        //attributes 'MainClass': 'src.main.java.Imp.Main'
+        attributes 'MainClass': 'java.Imp.Main'
+    }
 }*/
 
-repositories {
-    mavenCentral()
-}
+/*jar {
+    // Keep jar clean:
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
-}
+    manifest {
+        attributes 'MainClass': 'java.Imp.Main',
+                'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
+    }
+}*/
 
-gretty {
-    httpPort = 8080
-    servletContainer = 'jetty9'
-}
+    repositories {
+        mavenCentral()
+    }
 
-dependencies {
+    task wrapper(type: Wrapper) {
+        gradleVersion = '1.11'
+    }
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+/*sourceSets {
+    main {
+        //if you truly want to override the defaults:
+        //output.resourcesDir = file('out/bin')
+        // Compiled Java classes should use this directory
+        //java.outputDir = file('${basedir}')
+        //java.outputDir = file('webapp')
+    }
+}*/
 
-    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.6.v20170531'
-    ////compile group: 'org.apache.tomcat', name: 'tomcat', version: '9.0.10', ext: 'pom'
+    gretty {
+        httpPort = 8080
+        servletContainer = 'jetty9'
+    }
 
-    compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.12.RC1'
+    dependencies {
 
-    compile group: 'freemarker', name: 'freemarker', version: '2.3.9'
-    //compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
+        testCompile group: 'junit', name: 'junit', version: '4.12'
 
-}
+        compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.6.v20170531'
+        //compile group: 'org.apache.tomcat', name: 'tomcat', version: '9.0.10', ext: 'pom'
+
+        compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.12.RC1'
+
+        compile group: 'freemarker', name: 'freemarker', version: '2.3.9'
+        //compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
+
+    }
