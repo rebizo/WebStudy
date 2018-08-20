@@ -26,8 +26,8 @@ public class PageGenerator {
         Writer stream = new StringWriter();
 
         try {
-            //Template template = cfg.getTemplate(HTML_DIR + File.separator + filename);
-            Template template = cfg.getTemplate(filename);
+            Template template = cfg.getTemplate(HTML_DIR + File.separator + filename);
+            //Template template = cfg.getTemplate(filename);
             template.process(data, stream);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
