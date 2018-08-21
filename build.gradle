@@ -3,15 +3,16 @@ plugins {
     id "war"
     //id "jar"
     id "idea"
-    id "org.akhikhl.gretty" version "2.0.0"
+    //id "org.akhikhl.gretty" version "2.0.0"
+    id 'org.gretty' version '2.2.0'
     //id: 'java-library-distribution'
 }
 
-description = "WebStuding"
+description = "WebStudy"
 
 apply plugin: 'application'
 
-mainClassName = 'Imp.Main'
+mainClassName = 'main.Main'
 
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -20,31 +21,32 @@ sourceCompatibility = '1.8'
     webAppDirName=file('src/main/templates')
 }*/
 
-//project.webAppDirName = "src/main/webapp"
-project.webAppDirName = 'webapp'
+project.webAppDirName = "src/main/webapp"
+//project.webAppDirName = 'webapp'
 
 group 'WebStuding'
 version '1.0-SNAPSHOT'
 
-/*jar {
+jar {
     manifest {
-        //attributes 'MainClass': 'src.main.java.Imp.Main'
-        attributes 'MainClass': 'java.Imp.Main'
+        //attributes 'MainClass': 'src.main.java.main.Main'
+        attributes 'MainClass': 'java.main.Main'
     }
-}*/
+}
 
-/*jar {
+jar {
     // Keep jar clean:
     exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
 
     manifest {
-        attributes 'MainClass': 'java.Imp.Main',
+        attributes 'MainClass': 'java.main.Main',
                 'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
     }
-}*/
+}
 
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     task wrapper(type: Wrapper) {
@@ -71,7 +73,13 @@ version '1.0-SNAPSHOT'
         testCompile group: 'junit', name: 'junit', version: '4.12'
 
         compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.6.v20170531'
+
         //compile group: 'org.apache.tomcat', name: 'tomcat', version: '9.0.10', ext: 'pom'
+        //provided group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'////////////////////
+        ///provided group: 'javax.servlet', name: 'servlet-api', version: '2.5'////
+
+        providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+        testCompile 'junit:junit:4.12'
 
         compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.12.RC1'
 

@@ -1,3 +1,4 @@
+/*
 package services;
 
 import templater.PageGenerator;
@@ -26,12 +27,14 @@ public class Servlet2 extends HttpServlet {
 
             response.getWriter().println(pageVariables.get("key").toString());
 
-           /* if (pageVariables.containsKey("value")) {
+           */
+/* if (pageVariables.containsKey("value")) {
                 response.getWriter().println(pageVariables.get("value"));
             } else {
                 response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
             }
-*/
+*//*
+
             response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
 
@@ -39,3 +42,4 @@ public class Servlet2 extends HttpServlet {
 
     }
 }
+*/
