@@ -40,7 +40,7 @@ public class Servlet2 extends HttpServlet {
             pageVariables.put("pathInfo", request.getPathInfo());
             pageVariables.put("sessionId", request.getSession().getId());
             pageVariables.put("parameters", request.getParameterMap().toString());
-            return pageVariables;
+            return pageVariables;//dsa
         }
 
     }
