@@ -72,10 +72,10 @@ version '1.0-SNAPSHOT'
     manifest.attributes("Main-Class": mainClassName)
 }*/
 
-jar {
+/*jar {
     baseName = 'WebSt'
     version =  '0.1.0'
-}
+}*/
 /*
 task customFatJar(type: Jar) {
     manifest {
@@ -117,7 +117,7 @@ task customFatJar(type: Jar) {
         //compile group: 'com.github.onslip', name: 'gradle-one-jar', version: '1.0.5'// WORK!!!
         //classpath 'com.github.rholder:gradle-one-jar:1.0.5'
 
-        compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-        compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+     /*   compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+        compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'*/
 
     }
