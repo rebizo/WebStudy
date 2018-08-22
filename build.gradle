@@ -4,29 +4,30 @@ plugins {
     //id "jar"
     id "idea"
     //id "org.akhikhl.gretty" version "2.0.0"
-    id 'org.gretty' version '2.2.0'
+    //id 'org.gretty' version '2.2.0'
     //id: 'java-library-distribution'
 }
 
 description = "WebStudy"
 
-apply plugin: 'application'
+/*apply plugin: 'application'*/
 
-mainClassName = 'main.Main'
+/*mainClassName = 'main.Main'*/
 
-sourceCompatibility = '1.8'
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+/*sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'*/
 
 /*war{
     webAppDirName=file('src/main/templates')
 }*/
 
-project.webAppDirName = "src/main/webapp"
-//project.webAppDirName = 'webapp'
+/*project.webAppDirName = "src/main/webapp"*/
+project.webAppDirName = 'src/templates'
 
-group 'WebStuding'
+group 'WebStudy'
 version '1.0-SNAPSHOT'
 
+/*
 jar {
     manifest {
         //attributes 'MainClass': 'src.main.java.main.Main'
@@ -43,6 +44,7 @@ jar {
                 'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
     }
 }
+*/
 
     repositories {
         mavenCentral()
@@ -53,35 +55,37 @@ jar {
         gradleVersion = '1.11'
     }
 
-/*sourceSets {
-    main {
-        //if you truly want to override the defaults:
-        //output.resourcesDir = file('out/bin')
-        // Compiled Java classes should use this directory
-        //java.outputDir = file('${basedir}')
-        //java.outputDir = file('webapp')
+jar {
+    manifest {
+        attributes "Main-Class": "Main" // $Main
     }
-}*/
 
-    gretty {
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+/*    gretty {
         httpPort = 8080
         servletContainer = 'jetty9'
-    }
+    }*/
 
     dependencies {
 
         testCompile group: 'junit', name: 'junit', version: '4.12'
 
-        compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.6.v20170531'
+        /*providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+        testCompile 'junit:junit:4.12'*/
 
-        //compile group: 'org.apache.tomcat', name: 'tomcat', version: '9.0.10', ext: 'pom'
-        //provided group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'////////////////////
-        ///provided group: 'javax.servlet', name: 'servlet-api', version: '2.5'////
+        //provided group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 
-        providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-        testCompile 'junit:junit:4.12'
+        //compile group: 'org.mortbay.jetty', name: 'servlet-api', version: '3.0.20100224'
+        //provided group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+        //compile group: 'org.mortbay.jetty', name: 'servlet-api-2.5', version: '6.1.14'
 
-        compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.12.RC1'
+        compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.12.RC2'
+        //compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.12.RC2'
+        compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.12.RC2'
 
         compile group: 'freemarker', name: 'freemarker', version: '2.3.9'
         //compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
