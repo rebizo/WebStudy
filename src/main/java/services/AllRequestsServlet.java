@@ -1,4 +1,3 @@
-/*
 package services;
 
 import templater.PageGenerator;
@@ -52,4 +51,4 @@ public class AllRequestsServlet extends HttpServlet {
         pageVariables.put("parameters", request.getParameterMap().toString());
         return pageVariables;
     }
-}*/
+}

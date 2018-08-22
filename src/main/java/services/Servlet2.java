@@ -1,3 +1,4 @@
+/*
 package services;
 
 import templater.PageGenerator;
@@ -44,4 +45,4 @@ public class Servlet2 extends HttpServlet {
         }
 
     }
-}
+}*/
