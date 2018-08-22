@@ -10,7 +10,7 @@ buildscript {
 }
 
 plugins {
-    id "groovy"
+    //id "groovy"
     id 'java'
     //id "war"
     id "idea"
@@ -53,9 +53,6 @@ version '1.0-SNAPSHOT'
     repositories {
         mavenCentral()
         jcenter()
-     /*   maven {
-            url "https://mvnrepository.com/artifact/com.github.onslip/gradle-one-jar"
-        }*/
     }
 
 /*jar {
